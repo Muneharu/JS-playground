@@ -1,6 +1,6 @@
 
 
-export class Component {
+class Component {
   constructor(root, { listeners, className, tag = "div" }) {
     this.root = root;
     this.element = null;
