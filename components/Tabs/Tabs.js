@@ -8,31 +8,37 @@ class Tabs extends Component {
     console.log("SOMEHOW WORKING")
   }
 
-  onHTML() {
+  toHTML() {
     const activeTab = this.tabs[this.activeIndex];
     return `
       <div class="tabs__list">
         ${this.createTabElements(this.tabs)}
       </div>
       <div class="tabs__content">
-        ${this.activeTab.content}
+        ${activeTab.content}
       </div>
     `
   }
 
   onClick(e) {
     const index = +e.target.dataset.tab
-    if(e.target.dataset.tab) {
+    console.log("CLICKED")
+    if (e.target.dataset.tab) {
       this.activeIndex = index;
       this.render();
     }
   }
 
   createTabElements(tabs) {
-    return tabs.map(({name}, index)=> {
+    return tabs.map(({ name }, index) => {
       const active = this.activeIndex === index ? "tabs__list__element--active" : "";
       return `
-        <div data-tab="${index} class="tabs__list_element ${active}" aria-selected="${!!active} role="tab">
+        <div
+          data-tab="${index}"
+          class= "tabs__list__element ${active}"
+          aria-selected= "${!!active}"
+          role= "tab">
+          ${name}
         </div>
       `.trim();
     }).join("").trim();
@@ -61,4 +67,5 @@ const tabs = [
   { name: "Tab 4", content: `${content(4)}` },
 ];
 const component = new Tabs(root, { tabs });
+console.log(component);
 component.render();
