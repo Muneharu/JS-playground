@@ -1,11 +1,10 @@
 
 class Tabs extends Component {
   constructor(root, { tabs = [] }) {
-    super(root, { className: 'tabs', listeners: ["onClick"] });
+    super(root, { className: 'tabs', listeners: ["click"] });
     this.tabs = tabs;
     this.activeIndex = 0;
-    this.onClick = this.onClick.bind(this);
-    console.log("SOMEHOW WORKING")
+    this.click = this.click.bind(this);
   }
 
   toHTML() {
@@ -20,7 +19,7 @@ class Tabs extends Component {
     `
   }
 
-  onClick(e) {
+  click(e) {
     const index = +e.target.dataset.tab
     console.log("CLICKED")
     if (e.target.dataset.tab) {

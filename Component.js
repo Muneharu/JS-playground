@@ -14,10 +14,9 @@ class Component {
     this.element = document.createElement(this.tag);
     this.element.classList.add(this.className);
     this.events = this.listeners.map(type => {
-      console.log(type, "type");
       const handler = this[type]
-      console.log("handler", handler)
       if (!handler) throw Error(`handler ${type} is not implemented`);
+      console.log(type, handler);
       this.element.addEventListener(type, handler);
       return { type, handler }
     })
