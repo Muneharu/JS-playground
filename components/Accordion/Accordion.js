@@ -6,20 +6,21 @@ class Accordion extends Component {
     this.title = title;
     this.description = description;
     this.element = null;
+    this.isOpen = true;
     this.click = this.click.bind(this);
   }
 
   toHTML() {
     return `
       <div class="accordion">
-        <div class="title">${this.title}</div>
-        <div class="description">${this.description}</div>
+        <div class="accordion__header ${this.isOpen ?? 'open'}">${this.title}</div>
+        <div class="accordion__content">${this.description}</div>
       </div>
     `
   }
 
-  click(e) {
-    console.log("CLICKED");
+  click() {
+    if(this.isOpen) this.isOpen = !this.isOpen;
   }
 }
 
